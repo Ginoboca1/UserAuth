@@ -6,7 +6,7 @@ import Alert  from "./Alert";
 
 
 const Register = () => {
-  const { signup } = useAuth();
+  const { signUp } = useAuth();
 
   const [user, setUser] = useState({
     email: "",
@@ -20,8 +20,8 @@ const Register = () => {
     e.preventDefault();
     setError("");
     try {
-      await signup(user.email, user.password);
-      navigate("/");
+      await signUp(user.email, user.password);
+      navigate("/UserAuth");
     } catch (error) {
       setError(error.message);
     }

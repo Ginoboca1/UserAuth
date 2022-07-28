@@ -19,7 +19,7 @@ const Login = () => {
     setError("");
     try {
       await login(user.email, user.password);
-      navigate("/");
+      navigate("/UserAuth");
     } catch (error) {
       setError(error.message);
     }
@@ -31,7 +31,7 @@ const Login = () => {
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
-      navigate("/");
+      navigate("/UserAuth");
     } catch (error) {
       setError(error.message);
     }

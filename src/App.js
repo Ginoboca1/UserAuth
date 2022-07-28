@@ -15,7 +15,7 @@ const App = () => {
           <AuthProvider>
             <Routes>
               <Route path="/login" element={<Login />} />
-              <Route path="/"
+              <Route path="/UserAuth"
                 element={
                   <ProtectedRoutes>
                     <Home />
