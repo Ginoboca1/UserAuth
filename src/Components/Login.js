@@ -22,7 +22,9 @@ const Login = () => {
       await login(user.email, user.password);
       navigate("/UserAuth");
     } catch (error) {
-      setError(error.message);
+      if(error.code === 'auth/user-not-found'){
+        setError('Usuario no registrado')
+      };
     }
   };
 
@@ -112,7 +114,7 @@ const Login = () => {
       </button>
       <p className="my-4 text-sm flex justify-between px-3 text-black">
         Don't have an account?
-        <Link to="/register" className="text-red-700 hover:text-blue-900">
+        <Link to="/register" className="text-red-700 hover:text-black">
           Register
         </Link>
       </p>
