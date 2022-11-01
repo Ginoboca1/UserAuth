@@ -14,6 +14,7 @@ const Login = () => {
   const { login, loginWithGoogle, resetPassword } = useAuth();
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -25,15 +26,13 @@ const Login = () => {
     }
   };
 
-  const handleChange = ({ target: { value, name } }) =>
-    setUser({ ...user, [name]: value });
-
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
       navigate("/UserAuth");
     } catch (error) {
-      setError(error.message);
+      console.log(error)
+      setError('Error');
     }
   };
 
@@ -66,7 +65,7 @@ const Login = () => {
             type="email"
             name="email"
             id="email"
-            onChange={handleChange}
+            onChange={(e) => setUser({...user, email: e.target.value})}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="youremail@company.tld"
           />
@@ -83,7 +82,7 @@ const Login = () => {
             type="password"
             name="password"
             id="password"
-            onChange={handleChange}
+            onChange={(e) => setUser({...user, password: e.target.value})}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="*************"
           />

@@ -7,6 +7,7 @@ import Alert  from "./Alert";
 
 const Register = () => {
   const { signUp } = useAuth();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -14,7 +15,7 @@ const Register = () => {
   });
 
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +24,13 @@ const Register = () => {
       await signUp(user.email, user.password);
       navigate("/UserAuth");
     } catch (error) {
-      setError(error.message);
+      console.log(error.code);
+      if(error.code === 'auth/internal-error'){
+        setError('Correo Invalido')
+      }
+      if (error.code === 'auth/weak-password'){
+        setError('La contraseña tiene que tener minimo seis caracteres')
+      }
     }
   };
 

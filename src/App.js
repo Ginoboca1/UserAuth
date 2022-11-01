@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -10,7 +10,6 @@ import AuthProvider from "./Context/AuthContex";
 const App = () => {
   return (
     <>
-      <BrowserRouter>
         <div className="bg-slate-300 text-black h-screen flex text-white">
           <AuthProvider>
             <Routes>
@@ -26,7 +25,6 @@ const App = () => {
             </Routes>
           </AuthProvider>
         </div>
-      </BrowserRouter>
     </>
   );
 };
